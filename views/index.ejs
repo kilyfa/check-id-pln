@@ -91,7 +91,7 @@
         <input type="number" id="tokenid" name="tokenid" placeholder="Enter ID Token" required />
         <input type="submit" value="Check ID" />
       </form>
-      <% if(data.success == true) { %>
+      <% if(data) {%> <% if(data.success == true) { %>
       <div class="info">
         <h3>Nama Pemilik: <span><%= data.data["subscriber_name"] %></span></h3>
         <h3>Power: <span><%= data.data["segment_power"] %></span></h3>
@@ -101,7 +101,7 @@
       <div class="info">
         <h3><span>Terdapat error, silahkan cek ulang ID</span></h3>
       </div>
-      <% } %>
+      <% } %> <% } %>
     </div>
   </body>
 </html>
