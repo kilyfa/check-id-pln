@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check ID PLN</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #222831;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        background-color: #76abae;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        box-shadow: 8px 9px 63px -3px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 8px 9px 63px -3px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 8px 9px 63px -3px rgba(0, 0, 0, 0.75);
+      }
+      .container h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #eeeeee;
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #eeeeee;
+      }
+      input[type="number"] {
+        padding: 10px;
+        border: 1px solid #eeeeee;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+      input[type="submit"] {
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: #31363f;
+        color: #eeeeee;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      input[type="submit"]:hover {
+        background-color: #1e2127;
+        color: #eeeeee;
+      }
+      .info {
+        margin-top: 20px;
+      }
+      .info h3 {
+        font-size: 18px;
+        margin: 10px 0;
+        color: #333;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .info span {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Check ID PLN</h1>
+      <form action="/" method="post">
+        <label for="tokenid">ID Token:</label>
+        <input type="number" id="tokenid" name="tokenid" placeholder="Enter ID Token" required />
+        <input type="submit" value="Check ID" />
+      </form>
+      <% if(data.success == true) { %>
+      <div class="info">
+        <h3>Nama Pemilik: <span><%= data.data["subscriber_name"] %></span></h3>
+        <h3>Power: <span><%= data.data["segment_power"] %></span></h3>
+        <h3>ID Pemilik: <span><%= data.data["subscriber_id"] %></span></h3>
+      </div>
+      <% } else { %>
+      <div class="info">
+        <h3><span>Terdapat error, silahkan cek ulang ID</span></h3>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>
